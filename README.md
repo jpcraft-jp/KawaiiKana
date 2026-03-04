@@ -1,11 +1,12 @@
 # KawaiiKana
 
 **KawaiiKana** ist eine interaktive Webapp, um **Hiragana und Katakana zu lernen**.  
-Die App kombiniert **Nachzeichnen, Audio-Wiederholung (Shadowing) und Mini-Quiz**, um das Lernen möglichst effektiv zu gestalten – ähnlich wie Kinder ihre Muttersprache lernen.
+Die App kombiniert **Nachzeichnen, Audio-Wiederholung (Shadowing) und Mini-Quiz**, um das Lernen möglichst effektiv zu gestalten 
 
 ---
 
 ## Features
+
 
 - Anzeige von **Hiragana & Katakana** Zeichen
 - **Canvas zum Nachzeichnen** der Zeichen
