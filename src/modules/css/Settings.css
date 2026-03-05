@@ -1,0 +1,81 @@
+.SettingsBody {
+    border: 1px solid white;
+    height: 600px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.SettingsEntry {
+    font-size: larger;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.SettingsEntry.borderline {
+    border-bottom: rgba(150, 150, 150, 0.87) 1px solid;
+    height: 3px;
+    width: 70%;
+}
+
+.SettingsEntry.headline h3 {
+    margin: 0;      /* entfernt oben und unten */
+    padding: 1px;     /* optional */
+}
+
+.SettingsEntry.button {
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-switch-box {
+    height: 100%;
+    width: 75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-switch-body {
+    background-color: #000000;
+    border-radius: 50px;
+    height: 35px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.toggle-switch-blop {
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: white;
+    border-radius: 50px;
+    height: 24.5px;
+    width: 24.5px;
+    transition: transform 0.3s ease; /* Smooth Animation */
+}
+
+.toggle-switch-blop.on {
+    transform: translateX(40px);
+}
+
+.SettingsEntry.switch {
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    width: 350px;
+    height: 60px;
+    justify-content: start;
+    align-self: normal;
+}
+
+.SettingsEntry.switch .text {
+    margin-left: 18px;
+}

@@ -1,15 +1,39 @@
-import './App.css'
-import Icons from './Icons'
-import { useEffect, useState, type JSX } from 'react'
+import './css/App.css'
+import Icons from './helpers/Icons'
+import Pages from "./helpers/Pages"
+import { useEffect, useRef, useState, type JSX } from 'react'
+import Settings from './Settings'
 
 
-function Main(): JSX.Element {
-  return <h1>Main Content Box</h1>
-}
+
+
 
 function Test() {
   return <h1>Test</h1>
 }
+
+class MenuEventListener {
+
+  private events: Map<number, (() => void)[]> = new Map()
+
+  addEventListener(key: number, callback: () => void) {
+    if (!this.events.has(key)) {
+      this.events.set(key, [])
+    }
+
+    this.events.get(key)!.push(callback)
+  }
+
+  emit(key: number) {
+    const listeners = this.events.get(key)
+
+    if (!listeners) return
+
+    listeners.forEach(cb => cb())
+  }
+}
+
+
 
 function NotFound(): JSX.Element {
   return <h1>404 - Page not found</h1>
@@ -24,6 +48,7 @@ interface MenuEntry {
 }
 
 function App() {
+  const menuListender = useRef(new MenuEventListener()).current
   const [sidebarState, setSidebarState] = useState(false)
   const [pageContent, setPageContent] = useState<string>("main")
 
@@ -31,26 +56,28 @@ function App() {
     { id: 1, name: "Navigation", type: "headline" },
     { id: 2, type: "borderline" },
     { id: 3, type: "button", name: "Home", icon: Icons.home, page: "main" },
-    { id: 4, type: "button", name: "Test", icon: Icons.labs, page: "test" }
+    { id: 4, type: "button", name: "Test", icon: Icons.labs, page: "test" },
+    { id: 5, type: "button", name: "Settings", icon: Icons.settings, page: "settings" }
   ]
 
-  const Pages: Record<string, () => JSX.Element> = {
-    main: Main,
-    test: Test
+  const pages: Record<string, () => JSX.Element> = {
+    main: Pages.main,
+    test: Test,
+    settings: Pages.settings
   }
 
-  // 🔥 Hash beim Laden lesen
+
   useEffect(() => {
     const hash = window.location.hash.replace("#", "")
-    if (hash && Pages[hash]) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (hash && pages[hash]) {
+       
       setPageContent(hash)
     }
 
-    // 🔥 reagieren wenn Hash sich ändert
+  
     const onHashChange = () => {
       const newHash = window.location.hash.replace("#", "")
-      if (Pages[newHash]) {
+      if (pages[newHash]) {
         setPageContent(newHash)
       } else {
         setPageContent("404")
@@ -59,9 +86,10 @@ function App() {
 
     window.addEventListener("hashchange", onHashChange)
     return () => window.removeEventListener("hashchange", onHashChange)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const CurrentPage = Pages[pageContent] || NotFound
+  const CurrentPage = pages[pageContent] || NotFound
 
   return (
     <>
@@ -93,6 +121,7 @@ function App() {
               key={entry.id}
               className={`sidebar-menu-entry ${entry.type}`}
               onClick={() => {
+                menuListender.emit(entry.id)
                 if (entry.page) {
                   window.location.hash = entry.page
                   setSidebarState(false)

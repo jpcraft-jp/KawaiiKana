@@ -7,6 +7,8 @@
   line-height: 1.5;
   font-weight: 400;
 
+  overflow: hidden;
+
   color-scheme: light dark;
   color: var(--base-color);
   background-color: var(--base-background-color);
