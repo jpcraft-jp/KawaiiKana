@@ -1,0 +1,40 @@
+.contentbody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-body {
+
+    height: 620px;
+    width: 1380px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.levels-body-box {
+    height: 100%;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-box {
+    margin-top: 5px;
+    width: 70%;
+    border-bottom: 1px solid rgb(75, 75, 75);
+    font-size: large;
+    user-select: none;
+    cursor: pointer;
+}
+
+.level-box:last-child {
+    border: none !important;
+}

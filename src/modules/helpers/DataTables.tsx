@@ -8,7 +8,7 @@ export interface KanaLevels {
   [key: string]: KanaEntry[];
 }
 
-const KANA_DATA: KanaLevels = {
+const KANA_DATA = {
   level1: [
     { romaji: "a", hiragana: "あ", katakana: "ア" },
     { romaji: "i", hiragana: "い", katakana: "イ" },
@@ -109,7 +109,8 @@ const KANA_DATA: KanaLevels = {
     { romaji: "cha", hiragana: "ちゃ", katakana: "チャ" },
     { romaji: "chu", hiragana: "ちゅ", katakana: "チュ" },
     { romaji: "cho", hiragana: "ちょ", katakana: "チョ" }
-  ]
+  ],
+  length: 13
 };
 
 export default KANA_DATA

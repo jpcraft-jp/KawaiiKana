@@ -2,8 +2,6 @@ import './css/App.css'
 import Icons from './helpers/Icons'
 import Pages from "./helpers/Pages"
 import { useEffect, useRef, useState, type JSX } from 'react'
-import Settings from './Settings'
-
 
 
 
@@ -50,20 +48,22 @@ interface MenuEntry {
 function App() {
   const menuListender = useRef(new MenuEventListener()).current
   const [sidebarState, setSidebarState] = useState(false)
-  const [pageContent, setPageContent] = useState<string>("main")
+  const [pageContent, setPageContent] = useState<string>("jp_learn")
 
   const menuEntries: MenuEntry[] = [
     { id: 1, name: "Navigation", type: "headline" },
     { id: 2, type: "borderline" },
     { id: 3, type: "button", name: "Home", icon: Icons.home, page: "main" },
-    { id: 4, type: "button", name: "Test", icon: Icons.labs, page: "test" },
-    { id: 5, type: "button", name: "Settings", icon: Icons.settings, page: "settings" }
+    { id: 4, type: "button", name: "Japanische Symbole", icon: Icons.jp_lang_kana, page: "jp_learn" },
+    { id: 5, type: "button", name: "Test", icon: Icons.labs, page: "test" },
+    { id: 6, type: "button", name: "Settings", icon: Icons.settings, page: "settings" }
   ]
 
   const pages: Record<string, () => JSX.Element> = {
     main: Pages.main,
     test: Test,
-    settings: Pages.settings
+    settings: Pages.settings,
+    jp_learn: Pages.jp_learn
   }
 
 

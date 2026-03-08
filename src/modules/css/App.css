@@ -19,6 +19,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.contentbody {
+  margin-top: 25px;
+}
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
